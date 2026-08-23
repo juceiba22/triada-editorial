@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - La Tríada Editorial</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="admin.js" defer></script>
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Admin - La Tríada</h1>
+        <button id="logout-btn" class="btn btn-secondary" style="display: none;">Cerrar Sesión</button>
+    </header>
+
+    <main class="admin-main">
+        <!-- Auth View -->
+        <section id="auth-view" class="view active">
+            <form id="login-form">
+                <h2>Iniciar Sesión</h2>
+                <label>
+                    Email:
+                    <input type="email" id="login-email" required>
+                </label>
+                <label>
+                    Contraseña:
+                    <input type="password" id="login-password" required>
+                </label>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <div id="login-error" class="error"></div>
+            </form>
+        </section>
+
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view">
+            <nav class="dashboard-nav">
+                <button class="tab-btn active" data-target="books-list">Catálogo de Libros</button>
+                <button class="tab-btn" data-target="add-book">Añadir Libro</button>
+            </nav>
+
+            <div id="books-list" class="tab-content active">
+                <h2>Catálogo Actual</h2>
+                <div class="table-container">
+                    <table id="books-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Precio ARS</th>
+                                <th>Precio USD</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Books injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="add-book" class="tab-content">
+                <h2>Subir Nuevo Libro</h2>
+                <form id="book-form">
+                    <div class="form-grid">
+                        <label>ID (sin espacios, ej: mi-libro)<input type="text" id="book-id" required></label>
+                        <label>Título<input type="text" id="book-title" required></label>
+                        <label>Autor<input type="text" id="book-author" required></label>
+                        <label>Artista (opcional)<input type="text" id="book-artist"></label>
+                        <label>Precio Mercado Pago (ARS)<input type="number" id="book-price-ars" required></label>
+                        <label>Precio PayPal (USD)<input type="number" id="book-price-usd" step="0.01" required></label>
+                        <label>¿Tiene contraportada? <input type="checkbox" id="book-has-back" style="width:auto;"></label>
+                    </div>
+                    
+                    <label>Descripción<textarea id="book-desc" rows="4" required></textarea></label>
+                    <label>Características (papel, encuadernación, etc)<textarea id="book-features" rows="2" required></textarea></label>
+                    
+                    <fieldset>
+                        <legend>Reseña Destacada (Opcional)</legend>
+                        <div class="form-grid">
+                            <label>Nombre del reseñador<input type="text" id="book-review-name"></label>
+                            <label>Puntuación (1-5)<input type="number" id="book-review-rating" min="1" max="5" value="5"></label>
+                            <label>Fecha<input type="text" id="book-review-date" placeholder="DD/MM/YYYY"></label>
+                        </div>
+                        <label style="margin-top:0.5rem">Comentario<textarea id="book-review-comment" rows="3"></textarea></label>
+                    </fieldset>
+
+                    <div class="file-uploads">
+                        <label>Portada (Imagen)<input type="file" id="book-cover-front" accept="image/*" required></label>
+                        <label>Contraportada (Opcional)<input type="file" id="book-cover-back" accept="image/*"></label>
+                    </div>
+
+                    <button type="submit" id="save-book-btn" class="btn btn-primary">Guardar Libro</button>
+                    <div id="book-form-msg"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

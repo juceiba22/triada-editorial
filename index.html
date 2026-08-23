@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>La Tríada Editorial | Publicar desde la región, disputar sentidos</title>
+    <meta name="description" content="La Tríada Editorial es un proyecto político y cultural dedicado a la publicación de obras situadas en el norte argentino que piensan nuestra historia y política.">
+    <meta name="keywords" content="La Tríada Editorial, libros, editorial regional, Salta, Argentina, Posturas, Circulantes, Desborde, literatura regional, ensayos políticos">
+    <meta name="author" content="La Tríada Editorial">
+    
+    <!-- Open Graph (Social Media) -->
+    <meta property="og:title" content="La Tríada Editorial | Publicar desde la región">
+    <meta property="og:description" content="Un proyecto editorial situado y político para repensar el arte, la economía y la cultura desde el norte argentino.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#inicio" class="logo-link" id="nav-logo">
+                <img src="assets/logo.png" alt="La Tríada Editorial Logo" class="logo-img">
+                <div class="logo-title">
+                    LA TRÍADA
+                    <span>EDITORIAL</span>
+                </div>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+                    <li><a href="#catalogo" class="nav-link" data-section="catalogo">Catálogo</a></li>
+                    <li><a href="#nuestros-autores" class="nav-link" data-section="nuestros-autores">Nuestros Autores</a></li>
+                    <li><a href="#quienes-somos" class="nav-link" data-section="quienes-somos">Quiénes Somos</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="cart-btn" id="open-cart-btn" aria-label="Ver carrito">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-badge-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- SECTION: INICIO (HOME) -->
+        <section id="inicio" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="subtitle">Publicamos desde aquí</div>
+                    <h1>Pensar la región, disputar sentidos</h1>
+                    <p>La Tríada Editorial nace con el propósito de promover y desarrollar obras situadas que permitan reflexionar sobre nuestra experiencia histórica, cultural y política.</p>
+                    <div class="hero-cta">
+                        <a href="#catalogo" class="btn btn-primary" id="hero-btn-catalog">Explorar Catálogo</a>
+                        <a href="#quienes-somos" class="btn btn-secondary" id="hero-btn-about">Nuestro Manifiesto</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-logo-frame">
+                        <img src="assets/logo.png" alt="La Tríada Editorial Isologotipo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="featured-header">
+                <p>Nuestras Publicaciones</p>
+                <h2>Libros Recientes</h2>
+            </div>
+            
+            <div class="books-grid" id="featured-books-grid">
+                <!-- Dynamically populated in app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION: CATALOGO -->
+        <section id="catalogo" class="page-section">
+            <div class="featured-header">
+                <p>Explora nuestro catálogo</p>
+                <h2>Colección Disponible</h2>
+            </div>
+            <div class="books-grid" id="catalog-books-grid">
+                <!-- Dynamically populated in app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION: DETALLE DE LIBRO -->
+        <section id="libro-detalle" class="page-section">
+            <!-- Dynamically populated in app.js when clicking a book -->
+        </section>
+
+        <!-- SECTION: NUESTROS AUTORES -->
+        <section id="nuestros-autores" class="page-section">
+            <div class="featured-header">
+                <p>Las voces de nuestro catálogo</p>
+                <h2>Nuestros Autores</h2>
+            </div>
+            <div class="authors-grid" id="authors-container">
+                <!-- Dynamically populated in app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION: QUIENES SOMOS -->
+        <section id="quienes-somos" class="page-section">
+            <div class="about-grid">
+                <div class="about-text" id="about-manifesto-container">
+                    <!-- Text populated in app.js to keep index.html clean and modular -->
+                </div>
+                <div class="about-visual">
+                    <img src="assets/logo.png" alt="La Tríada Editorial Logotipo Completo">
+                    <div class="about-badge">Editorial Situada</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CHECKOUT -->
+        <section id="checkout" class="page-section">
+            <div class="featured-header">
+                <p>Finalizar Adquisición</p>
+                <h2>Proceso de Compra</h2>
+            </div>
+            
+            <div class="checkout-layout">
+                <div class="checkout-forms-container">
+                    <form id="checkout-form" class="checkout-form" onsubmit="event.preventDefault();">
+                        
+                        <!-- Step 1: Datos de Envío -->
+                        <div>
+                            <h3 class="checkout-section-title"><span class="step-num">1</span> Datos de Envío</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-name">Nombre Completo *</label>
+                                    <input type="text" id="checkout-name" required placeholder="Juan Pérez">
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-email">Correo Electrónico *</label>
+                                    <input type="email" id="checkout-email" required placeholder="juan@correo.com">
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 1rem;">
+                                <div class="form-group">
+                                    <label for="checkout-phone">Teléfono *</label>
+                                    <input type="tel" id="checkout-phone" required placeholder="+54 9 387 1234567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-country">País *</label>
+                                    <select id="checkout-country" required>
+                                        <option value="AR" selected>Argentina</option>
+                                        <option value="CL">Chile</option>
+                                        <option value="UY">Uruguay</option>
+                                        <option value="MX">México</option>
+                                        <option value="ES">España</option>
+                                        <option value="US">Estados Unidos</option>
+                                        <option value="OTHER">Otro País</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 1rem;">
+                                <div class="form-group">
+                                    <label for="checkout-address">Dirección y Altura *</label>
+                                    <input type="text" id="checkout-address" required placeholder="Av. Belgrano 1234, Piso 2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-city">Ciudad *</label>
+                                    <input type="text" id="checkout-city" required placeholder="Salta">
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 1rem;">
+                                <div class="form-group">
+                                    <label for="checkout-state" id="label-state">Provincia *</label>
+                                    <input type="text" id="checkout-state" required placeholder="Salta">
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-zip">Código Postal *</label>
+                                    <input type="text" id="checkout-zip" required placeholder="A4400">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Método de Envío -->
+                        <div>
+                            <h3 class="checkout-section-title"><span class="step-num">2</span> Tipo de Envío</h3>
+                            <div class="shipping-options-list" id="shipping-options-container">
+                                <!-- Populated dynamically based on country in app.js -->
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Medio de Pago -->
+                        <div>
+                            <h3 class="checkout-section-title"><span class="step-num">3</span> Medio de Pago</h3>
+                            <div class="payment-methods-grid" id="payment-methods-container">
+                                <!-- Populated dynamically based on country in app.js -->
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.2rem;" id="checkout-submit-btn">
+                                Continuar al Pago
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="order-summary-container">
+                    <div class="order-summary-box">
+                        <h3 class="checkout-section-title" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Resumen del Pedido</h3>
+                        <div class="summary-items-list" id="summary-items-list">
+                            <!-- Populated dynamically in app.js -->
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-totals">
+                            <div class="summary-total-row">
+                                <span>Subtotal</span>
+                                <span id="summary-subtotal">$0 ARS</span>
+                            </div>
+                            <div class="summary-total-row">
+                                <span>Envío</span>
+                                <span id="summary-shipping">$0 ARS</span>
+                            </div>
+                            <div class="summary-divider" style="margin: 0.8rem 0;"></div>
+                            <div class="summary-total-row grand-total">
+                                <span>Total</span>
+                                <span id="summary-total" class="total-val">$0 ARS</span>
+                            </div>
+                        </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CHECKOUT SUCCESS -->
+        <section id="checkout-success" class="page-section">
+            <div class="payment-status-screen">
+                <div class="status-icon success">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="status-title">¡Compra Completada!</h3>
+                <p class="status-desc" id="success-message">Tu pedido ha sido procesado de manera exitosa.</p>
+                
+                <div id="success-details-box" style="max-width: 600px; margin: 0 auto 2.5rem auto; background-color: var(--color-bg-alt); border: 1px solid var(--color-border); padding: 2rem; border-radius: 6px; text-align: left; font-size: 0.95rem; line-height: 1.6;">
+                    <div style="text-align: center; padding: 1rem 0;">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--color-accent); margin-bottom: 1rem;"></i>
+                        <p>Confirmando el pago con la pasarela de cobro...</p>
+                    </div>
+                </div>
+                
+                <button onclick="app.finalizePurchaseOrder()" class="btn btn-primary" style="padding: 0.9rem 2.5rem;">
+                    Volver a la tienda
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION: CHECKOUT FAILURE -->
+        <section id="checkout-failure" class="page-section">
+            <div class="payment-status-screen">
+                <div class="status-icon failure">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <h3 class="status-title" style="color: #c62828;">Pago No Completado</h3>
+                <p class="status-desc">La transacción fue cancelada o no pudo procesarse.</p>
+                
+                <div style="max-width: 600px; margin: 0 auto 2.5rem auto; background-color: var(--color-bg-alt); border: 1px solid var(--color-border); padding: 2rem; border-radius: 6px; text-align: left; font-size: 0.95rem; line-height: 1.6;">
+                    <p style="margin-bottom: 1rem;"><strong>¿Qué sucedió?</strong></p>
+                    <p style="color: var(--color-text-muted); margin-bottom: 1rem;">
+                        No se ha realizado ningún cargo. Esto puede deberse a que cancelaste el proceso de pago, o la entidad emisora de tu tarjeta declinó la operación.
+                    </p>
+                    <p id="failure-details-text" style="color: var(--color-text-muted); font-size: 0.85rem; border-left: 3px solid #c62828; padding-left: 1rem; margin-top: 1rem;"></p>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#checkout" class="btn btn-primary" style="padding: 0.9rem 2.5rem;">Reintentar Pago</a>
+                    <a href="#catalogo" class="btn btn-secondary" style="padding: 0.9rem 2.5rem;">Ir al Catálogo</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Cart Sidebar Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Tu Compra</h3>
+            <button class="close-cart-btn" id="close-cart-btn" aria-label="Cerrar carrito">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container">
+            <!-- Dynamically populated in app.js -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-totals-row">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0 ARS</span>
+            </div>
+            <a href="#checkout" class="btn btn-primary" style="display: block; width: 100%;" id="cart-checkout-btn">Iniciar Compra</a>
+        </div>
+    </div>
+
+    <!-- Payment Gateway Simulation Modal -->
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-card" id="payment-modal-card">
+            <!-- Content will be injected dynamically based on payment choice (Mercado Pago or PayPal) in app.js -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: white;">La Tríada Editorial</h4>
+                <p style="margin-top: 1rem;">Un espacio para producir libros que nos ayuden a pensar, imaginar y habitar de otro modo el presente.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/latriadaeditorial/" target="_blank" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: white;">Publicaciones</h4>
+                <ul>
+                    <li><a href="#libro-detalle/comunidad-organizada">La Comunidad Organizada</a></li>
+                    <li><a href="#libro-detalle/justicialismo">El Justicialismo</a></li>
+                    <li><a href="#libro-detalle/nueva-coronica">Nueva Corónica y Buen Gobierno</a></li>
+                    <li><a href="#libro-detalle/poema-robot">El Poema del Robot</a></li>
+                    <li><a href="#libro-detalle/crisis-milenio">La crisis del nuevo milenio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: white;">Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: white;">Ubicación</h4>
+                <p>Salta / Tucumán / Santiago del Estero<br>Norte de la República Argentina</p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.4)">La Tríada Editorial asume su lugar. Publicamos desde aquí.</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 La Tríada Editorial. Todos los derechos reservados.</p>
+            <p>Pensamiento situado y regional.</p>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
