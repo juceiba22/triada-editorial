@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Color Palette from main site */
-    --color-bg: #fdfbf7;           /* Warm paper background */
-    --color-bg-alt: #f5f0e6;       /* Slightly darker paper */
-    --color-text: #1a1e1b;         /* Charcoal ink */
-    --color-text-muted: #5e6560;   /* Muted grey */
-    --color-accent: #a94a2b;       /* Terracotta clay */
-    --color-accent-hover: #89371d;  /* Darker terracotta */
-    --color-accent-green: #222222; /* Dark grey/black */
-    --color-border: #e6dfd5;       /* Paper-colored borders */
+    /* Caja Negra Inspired Palette */
+    --color-bg: #ffffff;           
+    --color-bg-alt: #f8f8f8;       
+    --color-text: #111111;         
+    --color-text-muted: #666666;   
+    --color-accent: #b33924;       
+    --color-accent-hover: #8c2a19;
+    --color-accent-green: #111111; 
+    --color-border: #e6e6e6;       
     --color-card-bg: #ffffff;
-    --color-shadow: rgba(43, 39, 35, 0.06);
-    --color-shadow-hover: rgba(43, 39, 35, 0.12);
+    --color-shadow: rgba(0, 0, 0, 0.04);
+    --color-shadow-hover: rgba(0, 0, 0, 0.12);
     
-    /* Fonts */
-    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     
     /* Layout */
@@ -27,22 +27,23 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
     font-family: var(--font-serif);
-    font-weight: 700;
+    font-weight: 500;
 }
 
-/* Header matching the site */
+/* Header */
 .admin-header {
     border-bottom: 1px solid var(--color-border);
-    background-color: rgba(253, 251, 247, 0.85);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -50,13 +51,15 @@ h1, h2, h3 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    height: 90px;
+    height: 85px;
 }
 
 .admin-header h1 {
     font-size: 2rem;
-    color: var(--color-accent-green);
+    color: var(--color-text);
     margin: 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 button {
@@ -68,30 +71,33 @@ button {
 }
 
 .btn {
-    display: inline-block;
-    padding: 0.9rem 2rem;
-    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    border-radius: 4px;
-    text-align: center;
+    border-radius: 0px; 
+    transition: var(--transition-smooth);
 }
 
 .btn-primary {
-    background-color: var(--color-accent-green);
+    background-color: var(--color-text);
     color: white;
+    border: 1px solid var(--color-text);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-accent);
-    box-shadow: 0 4px 12px rgba(169, 74, 43, 0.15);
-    transform: translateY(-2px);
+    background-color: transparent;
+    color: var(--color-text);
 }
 
 .btn-secondary {
     border: 1px solid var(--color-border);
     color: var(--color-text);
+    background-color: transparent;
 }
 
 .btn-secondary:hover {
@@ -122,10 +128,8 @@ button {
 #login-form {
     max-width: 400px;
     margin: 2rem auto;
-    background: var(--color-card-bg);
+    background: transparent;
     padding: 3rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px var(--color-shadow);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -139,14 +143,16 @@ button {
     flex-direction: column;
     gap: 0.5rem;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--color-text);
 }
 
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
     padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 4px;
+    border-radius: 0;
     font-family: var(--font-sans);
     font-size: 1rem;
     background-color: var(--color-bg-alt);
@@ -156,13 +162,12 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: var(--color-accent-green);
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(35, 62, 51, 0.1);
+    border-color: var(--color-text);
+    background-color: transparent;
 }
 
 .error { color: #d32f2f; font-size: 0.9rem; font-weight: 500; }
-.success { color: var(--color-accent-green); font-size: 0.9rem; font-weight: 500; }
+.success { color: var(--color-text); font-size: 0.9rem; font-weight: 500; }
 
 /* Dashboard Tabs */
 .dashboard-nav {
@@ -174,30 +179,29 @@ input:focus, textarea:focus {
 
 .tab-btn {
     padding: 1rem 0;
-    font-size: 1.1rem;
-    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: var(--color-text-muted);
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
 }
 
 .tab-btn:hover {
-    color: var(--color-accent);
+    color: var(--color-text);
 }
 
 .tab-btn.active {
-    color: var(--color-accent-green);
-    border-bottom-color: var(--color-accent-green);
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
 }
 
 .tab-content {
     display: none;
-    background: var(--color-card-bg);
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px var(--color-shadow);
-    border: 1px solid var(--color-border);
+    background: transparent;
+    padding: 2.5rem 0;
 }
 
 .tab-content.active {
@@ -208,11 +212,11 @@ input:focus, textarea:focus {
 .tab-content h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--color-accent-green);
+    color: var(--color-text);
 }
 
 /* Table */
-.table-container { overflow-x: auto; }
+.table-container { overflow-x: auto; border: 1px solid var(--color-border); }
 table {
     width: 100%;
     border-collapse: collapse;
@@ -227,21 +231,22 @@ th {
     font-weight: 600;
     color: var(--color-text);
     text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
 }
 tr:hover {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-alt);
 }
+tr:last-child td { border-bottom: none; }
 
-.btn-delete { color: #d32f2f; font-weight: 600; }
-.btn-delete:hover { color: #9a0007; text-decoration: underline; }
+.btn-delete { color: #d32f2f; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+.btn-delete:hover { text-decoration: underline; }
 
-.btn-edit { color: var(--color-accent); font-weight: 600; margin-right: 1rem; }
-.btn-edit:hover { color: var(--color-accent-hover); text-decoration: underline; }
+.btn-edit { color: var(--color-text); font-weight: 600; margin-right: 1rem; font-size: 0.8rem; text-transform: uppercase; }
+.btn-edit:hover { color: var(--color-accent); text-decoration: underline; }
 
 /* Form */
-#book-form { display: flex; flex-direction: column; gap: 1.5rem; }
+#book-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; }
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -251,20 +256,25 @@ tr:hover {
 .file-uploads { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
 .file-uploads input[type="file"] {
     font-size: 0.9rem;
+    padding: 0;
+    border: none;
+    background: transparent;
 }
 
 fieldset {
     border: 1px solid var(--color-border);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: 0;
     margin-top: 1rem;
-    background-color: var(--color-bg-alt);
+    background-color: transparent;
 }
 legend {
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     font-weight: 600;
-    color: var(--color-accent-green);
+    color: var(--color-text);
     padding: 0 0.5rem;
 }
 
