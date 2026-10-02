@@ -541,8 +541,9 @@ nav a:hover::after, nav a.active::after {
 /* Detail Book */
 .detail-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 6rem;
+    align-items: start;
 }
 
 .detail-visual {
@@ -551,9 +552,12 @@ nav a:hover::after, nav a.active::after {
     background-color: var(--color-bg-alt);
     padding: 4rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
     min-height: 600px;
+    overflow: hidden;
 }
 
 .detail-cover-view {
@@ -562,10 +566,77 @@ nav a:hover::after, nav a.active::after {
     justify-content: center;
 }
 
+.detail-cover-view {
+    perspective: 1500px;
+}
+
 .detail-cover-wrapper {
+    position: relative;
     width: 320px;
+    max-width: 100%;
     height: auto;
     box-shadow: 15px 25px 50px rgba(0,0,0,0.15);
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.detail-cover-wrapper.flipped {
+    transform: rotateY(180deg);
+}
+
+.detail-cover-side {
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.detail-cover-side img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.detail-cover-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+}
+
+.detail-cover-back img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-cover-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.detail-cover-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.detail-cover-btn:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+}
+
+.detail-cover-btn.active {
+    background: var(--color-text);
+    border-color: var(--color-text);
+    color: #fff;
 }
 
 .detail-info h2 {
@@ -884,6 +955,7 @@ footer {
 /* Responsive */
 @media (max-width: 992px) {
     .hero-section, .about-grid, .detail-container, .checkout-layout { grid-template-columns: 1fr; gap: 4rem; }
+    .detail-visual { position: static; }
     .books-grid { grid-template-columns: repeat(2, 1fr); }
     .authors-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -898,5 +970,6 @@ footer {
     .hero-content h1 { font-size: 2.8rem; }
     .footer-grid { grid-template-columns: 1fr; }
     .cart-drawer { width: 100%; right: -100%; }
-    .detail-visual { padding: 2rem; min-height: auto; }
+    .detail-visual { padding: 2rem; min-height: auto; position: static; }
+    .detail-info h2 { font-size: 2.6rem; }
 }
